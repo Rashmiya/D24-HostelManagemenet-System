@@ -112,6 +112,28 @@ public class StudentFormController {
     }
 
     public void DeleteStudentOnAction(ActionEvent actionEvent) {
+        StudentTM selectedItem = tblStudent.getSelectionModel().getSelectedItem();
+
+        try {
+            if (studentBO.deleteStudent(selectedItem.getId())) {
+                Notifications notify = Notifications.create();
+                notify.title("Student Deleted !");
+                notify.text(" You Successfully Deleted Student.");
+                notify.graphic(null);
+                notify.hideAfter(Duration.seconds(7));
+                notify.position(Pos.BOTTOM_RIGHT);
+                notify.showConfirm();
+                
+                /*initUI();*/
+                loadAllStudents();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something Went Wrong !!").show();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void saveStudentOnAction(ActionEvent actionEvent) {

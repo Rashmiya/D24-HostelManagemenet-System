@@ -58,7 +58,7 @@ public class StudentBOImpl implements StudentBo {
 
     @Override
     public boolean deleteStudent(String id) throws IOException {
-        return false;
+        return studentDAO.delete(id);
     }
 
     @Override
