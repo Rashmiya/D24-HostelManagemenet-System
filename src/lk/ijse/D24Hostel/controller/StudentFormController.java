@@ -123,7 +123,7 @@ public class StudentFormController {
                 notify.hideAfter(Duration.seconds(7));
                 notify.position(Pos.BOTTOM_RIGHT);
                 notify.showConfirm();
-                
+
                 /*initUI();*/
                 loadAllStudents();
             } else {
