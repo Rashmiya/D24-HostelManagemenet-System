@@ -24,7 +24,7 @@ public class DashboardFormController {
     }
 
     public void manageStudents(MouseEvent mouseEvent) throws IOException {
-        Parent load = FXMLLoader.load(getClass().getResource("../view/StudentForm.fxml"));
+        Parent load = FXMLLoader.load(getClass().getResource("lk/ijse/D24Hostel/view/StudentForm.fxml"));
         Stage stage = (Stage) DashboardForm.getScene().getWindow();
         stage.setScene(new Scene(load));
         stage.show();
