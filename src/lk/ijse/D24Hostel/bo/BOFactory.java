@@ -1,5 +1,10 @@
 package lk.ijse.D24Hostel.bo;
 
+import lk.ijse.D24Hostel.bo.impl.ReservationBOImpl;
+import lk.ijse.D24Hostel.bo.impl.RoomBOImpl;
+import lk.ijse.D24Hostel.bo.impl.StudentBOImpl;
+import lk.ijse.D24Hostel.bo.impl.UserBOImpl;
+
 public class BOFactory {
     private static BOFactory boFactory;
 

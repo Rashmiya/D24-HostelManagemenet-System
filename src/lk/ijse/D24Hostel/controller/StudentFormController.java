@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.D24Hostel.bo.BOFactory;
+import lk.ijse.D24Hostel.bo.custom.StudentBo;
 import lk.ijse.D24Hostel.view.tm.StudentTM;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class StudentFormController {
     public TextField txtSearch;
     public JFXDatePicker datePickerDOB;
 
-    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.STUDENT);
+    StudentBo studentBO = (StudentBo) BOFactory.getInstance().getBO(BOFactory.BOTypes.STUDENT);
 
     public void searchOnAction(ActionEvent actionEvent) {
     }
