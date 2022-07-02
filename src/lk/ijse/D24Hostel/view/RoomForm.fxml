@@ -25,7 +25,7 @@
             <Font name="Constantia Bold" size="18.0" />
          </font>
       </Text>
-      <Separator layoutX="24.0" layoutY="57.0" prefHeight="6.0" prefWidth="556.0" />
+      <Separator layoutX="24.0" layoutY="57.0" prefHeight="6.0" prefWidth="513.0" />
       <ImageView fitHeight="39.0" fitWidth="55.0" layoutX="515.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assests/backIcon.png" />
