@@ -4,14 +4,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.D24Hostel.bo.BOFactory;
 import lk.ijse.D24Hostel.bo.custom.ReservationBO;
 import lk.ijse.D24Hostel.bo.custom.RoomBo;
+import lk.ijse.D24Hostel.dto.RoomDTO;
 import lk.ijse.D24Hostel.view.tm.ReservationTM;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,17 +45,19 @@ public class ReservationFormController {
     public TableColumn colKeyMoney;
     public TableColumn colStatus;
     public TableColumn colModify;
+    String reservationId;
+    int PQty;
 
     ReservationBO reservationBO = (ReservationBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.RESERVATION);
     RoomBo roomBO = (RoomBo) BOFactory.getInstance().getBO(BOFactory.BOTypes.ROOM);
 
     public void initialize() {
-        /*IdGenerate();*/
+        IdGenerate();
 
-        tblReservation.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("reserveID"));
+        tblReservation.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("reservationID"));
         tblReservation.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("roomID"));
         tblReservation.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("roomType"));
-        tblReservation.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("studentQty"));
+        tblReservation.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("Qty"));
         tblReservation.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
         tblReservation.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("status"));
         TableColumn<ReservationTM, Button> lastCol = (TableColumn<ReservationTM, Button>) tblReservation.getColumns().get(6);
@@ -60,15 +66,22 @@ public class ReservationFormController {
             btnDelete.setOnAction(event -> {
                 if(tblReservation.getSelectionModel().getSelectedItem()!=null){
                     try {
-                        if(purchaseReserveBO.deleteReservation(reservationId)){
-                            new Alert(Alert.AlertType.CONFIRMATION,"Deleted.....").show();
-                            ////ReservationDTO reservationDTO = purchaseReserveBO.searchReservation(lblReserveID.getText());
+                        if(ReservationBO.deleteReservation(reservationId)){
+                            Notifications notify = Notifications.create();
+                            notify.title("Deleted!");
+                            notify.text(" You Successfully deleted.");
+                            notify.graphic(null);
+                            notify.hideAfter(Duration.seconds(7));
+                            notify.position(Pos.BOTTOM_RIGHT);
+                            notify.showConfirm();
+
+                            //ReservationDTO reservationDTO = purchaseReserveBO.searchReservation(lblReserveID.getText());
                             //  Room roomID = reservationDTO.getRoomID();
-                            System.out.println("qry room: "+preQty);
+                            System.out.println("qry room: "+PQty);
 
-                            RoomDTO roomDTO1 = purchaseReserveBO.searchRooms((String) cmbRoomID.getValue());
+                            RoomDTO roomDTO1 = ReservationBO.searchRooms((String) cmbRoomID.getValue());
 
-                            roomDTO1.setRoomQty(preQty);
+                            roomDTO1.setQty(PQty);
 
                             roomBO.updateRoom(roomDTO1);
 
@@ -159,8 +172,23 @@ public class ReservationFormController {
     }
 }
 
-    /*private void IdGenerate() {
-        reservationId=generateNewOrderId();
-        lblReserveID.setText(reservationId);
-    }*/
+    private void IdGenerate() {
+         reservationId = generateNewOrderId();
+        lblReservationID.setText(reservationId);
     }
+
+    private String generateNewOrderId() {
+        try {
+            return ReservationBO.generateNewOrderID();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        new Alert(Alert.AlertType.ERROR, "Failed to generate a new order id").show();
+        return "R001";
+    }
+    }
+}

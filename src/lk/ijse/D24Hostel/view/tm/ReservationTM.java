@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class ReservationTM {
-    private String register_Id;
-    private LocalDate date;
-    private String keyMoneyStatus;
+    private String reservationID;
+    private String roomID;
+    private String roomType;
+    private int Qty;
+    private double keyMoney;
+    private String status;
 }
