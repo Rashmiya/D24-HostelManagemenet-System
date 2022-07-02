@@ -12,5 +12,11 @@ public class RoomDTO {
     private String roomType;
     private String keyMoney;
     private int qty;
-    private String status;
+
+    public RoomDTO(String id, String type, String keyMoney, int qty) {
+        this.roomId = id;
+        this.roomType = type;
+        this.keyMoney = keyMoney;
+        this.qty = qty;
+    }
 }

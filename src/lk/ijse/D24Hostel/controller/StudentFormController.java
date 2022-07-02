@@ -49,7 +49,7 @@ public class StudentFormController {
 
         cmbGender.getItems().addAll("Male","Female");
 
-        tblStudent.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("sId"));
+        tblStudent.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tblStudent.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         tblStudent.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
         tblStudent.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("contactNumber"));

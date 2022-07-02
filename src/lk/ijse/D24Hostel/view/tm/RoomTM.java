@@ -12,5 +12,4 @@ public class RoomTM {
     private String roomType;
     private String keyMoney;
     private int qty;
-    private String status;
 }

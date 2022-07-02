@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="452.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24Hostel.controller.RoomFormController">
+<AnchorPane fx:id="RoomForm" prefHeight="452.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24Hostel.controller.RoomFormController">
     <children>
         <JFXTextField fx:id="txtKeyMoney" labelFloat="true" layoutX="339.0" layoutY="91.0" prefHeight="25.0" prefWidth="200.0" promptText="Key Money" unFocusColor="BLACK" />
         <JFXTextField fx:id="txtRoomQty" labelFloat="true" layoutX="339.0" layoutY="149.0" prefHeight="25.0" prefWidth="200.0" promptText="Room Qty" unFocusColor="BLACK" />
@@ -32,20 +32,20 @@
          </image>
       </ImageView>
       <JFXButton layoutX="513.0" layoutY="10.0" onAction="#backToDashboardbtnOnAction" prefHeight="46.0" prefWidth="52.0" />
-      <TableView fx:id="tblStudent" layoutX="27.0" layoutY="295.0" prefHeight="145.0" prefWidth="532.0">
+      <TableView fx:id="tblRoom" layoutX="27.0" layoutY="295.0" prefHeight="145.0" prefWidth="532.0">
          <columns>
             <TableColumn fx:id="colId" prefWidth="105.0" text="Room ID" />
-            <TableColumn fx:id="colName" prefWidth="123.0" text="Room Type" />
-            <TableColumn fx:id="colAddress" prefWidth="171.0" text="Key Money" />
-            <TableColumn fx:id="colContactNumber" prefWidth="132.0" text="Room Qty" />
+            <TableColumn fx:id="colType" prefWidth="118.0" text="Room Type" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="175.0" text="Key Money" />
+            <TableColumn fx:id="colQty" prefWidth="133.0" text="Room Qty" />
          </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="171.0" layoutY="202.0" mnemonicParsing="false" onAction="#saveStudentOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #223570;" text="Save" textFill="#ebebeb">
+      <Button fx:id="btnSave" layoutX="171.0" layoutY="202.0" mnemonicParsing="false" onAction="#saveRoomOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #223570;" text="Save" textFill="#ebebeb">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnDelete" layoutX="287.0" layoutY="202.0" mnemonicParsing="false" onAction="#DeleteStudentOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #223570;" text="Update" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="287.0" layoutY="202.0" mnemonicParsing="false" onAction="#deleteRoomOnAction" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #223570;" text="Delete" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
